@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sort the Entered Array</title>
+</head>
+<body>
 
+    <h1>Sort the Entered Array</h1>
+
+    <label>Enter array values (separated by commas):</label><br>
+    <input type="text" id="arrayValues" value="5, 3, 8, 2">
+
+    <br><br>
+
+    <button onclick="sortArray()">Sort</button>
+
+    <h2>Original Array:</h2>
+    <p id="original"></p>
+
+    <h2>Sorted Array:</h2>
+    <p id="sorted"></p>
+
+    <script>
+
+        function sortArray() {
+
+            let input = document.getElementById("arrayValues").value;
+
+            let numbers = input.split(",");
+
+            for (let i = 0; i < numbers.length; i++) {
+                numbers[i] = Number(numbers[i].trim());
+            }
+
+            let originalOutput = "";
+
+            for (let i = 0; i < numbers.length; i++) {
+                originalOutput += "Index " + i + ": " + numbers[i] + "<br>";
+            }
+
+            document.getElementById("original").innerHTML = originalOutput;
+
+            for (let i = 0; i < numbers.length - 1; i++) {
+
+                for (let j = 0; j < numbers.length - 1 - i; j++) {
+
+                    if (numbers[j] > numbers[j + 1]) {
+
+                        let temp = numbers[j];
+
+                        numbers[j] = numbers[j + 1];
+
+                        numbers[j + 1] = temp;
+                    }
+                }
+            }
+
+            let sortedOutput = "";
+
+            for (let i = 0; i < numbers.length; i++) {
+                sortedOutput += "Index " + i + ": " + numbers[i] + "<br>";
+            }
+
+            document.getElementById("sorted").innerHTML = sortedOutput;
+        }
+
+    </script>
+
+</body>
+</html>
