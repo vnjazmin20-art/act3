@@ -26,20 +26,19 @@
 
             let input = document.getElementById("arrayValues").value;
 
-            // Manually parse the comma-separated string without split()
             let numbers = [];
             let currentItem = "";
 
             for (let i = 0; i < input.length; i++) {
                 if (input[i] === ",") {
-                    numbers.push(Number(currentItem.trim()));
+                    numbers.push(Number(currentItem));
                     currentItem = "";
                 } else {
                     currentItem += input[i];
                 }
             }
-            if (currentItem.trim() !== "") {
-                numbers.push(Number(currentItem.trim()));
+            if (currentItem !== "") {
+                numbers.push(Number(currentItem));
             }
 
             let originalOutput = "";
@@ -50,7 +49,6 @@
 
             document.getElementById("original").innerHTML = originalOutput;
 
-            // Bubble sort algorithm (without using sort())
             for (let i = 0; i < numbers.length - 1; i++) {
 
                 for (let j = 0; j < numbers.length - 1 - i; j++) {
